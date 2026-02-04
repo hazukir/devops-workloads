@@ -1,12 +1,4 @@
-#linux basics
+# DevOps Journey
 
-List of commands and concepts used during this section:
+This is  my journey into learning and practicing concepts and tools related to DevOps.
 
-* Basics of Command line.
-* Users, groups, permissions and accounts.
-* Vim editor refresher.
-* File ownership.
-* Pipes & redirect.
-* Scripting.
-* SSH.
-* Others.
