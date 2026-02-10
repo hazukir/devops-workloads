@@ -1,0 +1,77 @@
+apt 
+
+This is the Linux Mint "apt" command.
+
+This command acts as a wrapper for the APT package manager and many other useful tools such as apt-get, apt-cache, apt-mark, dpkg, aptitude...etc.
+
+It is installed in /usr/local/bin/apt. To use the upstream apt command directly type /usr/bin/apt.
+
+
+apt = Advanced Package Tool
+
+
+
+apt-get = same as apt but with some additional options.
+
+Usage: apt-get [options] command
+       apt-get [options] install|remove pkg1 [pkg2 ...]
+       apt-get [options] source pkg1 [pkg2 ...]
+
+apt-get is a command line interface for retrieval of packages
+and information about them from authenticated sources and
+for installation, upgrade and removal of packages together
+with their dependencies.
+
+
+ex: sudo apt install 7zip
+    - will install 7zip and its dependencies.
+
+In Linux different from windows, when installing new software, it will also download its dependencies
+because it is not packaged together.
+
+
+to see where the sources or repositories are, please check:
+    ls /etc/apt/source.list
+
+Ideally before installing new applications, you should run system update to check and upgrade:
+    * sudo apt update 
+    * apt list --upgradable -> will list all softwares that will be upgrade or updated.
+    * sudo apt upgrade -y = will update/upgrade the softwares.
+
+
+Sometimes, it is not possible to install some softwares directly from either the command line or the software center.
+In these cases, you should follow the instructions on the webpage, which normally asks to add the software repository and key autheticator to the apt source list.
+Or you can use Snap (for Ubuntu) or Flatpak which can give you recent versions of the apps.
+Snap and Flatpak are containerized versions of the app. They will be installed either for the user or system-wide.
+
+Flatpak can be installed either per-user (--user) or system-wide (default). User-level installations are stored in ~/.local/share/flatpak.
+Snap generally is installed system-wide in /snap/ or /var/lib/snapd/.
+
+If using Linux Mint, I recommed installing "Bazaar" to install and manage Flatpak applications. it is really user-friendly.
+
+
+
+## Snap vs Flatpak
+
+The Key Differences
+1. Why Mint hates Snap (The "Political" Difference)
+
+Snap is owned by Canonical (the company behind Ubuntu). While the software you install is open source, the Snap Store (the "backend") is proprietary and closed. Linux Mint's developers feel this goes against the spirit of Linux because it gives one company total control.
+
+    Flatpak is decentralized. While most people use Flathub, anyone can create their own Flatpak "store."
+
+2. Performance and "Bloat"
+
+    Snap uses a compressed file system (SquashFS). Every time you open a Snap app, your computer has to "mount" it like a virtual disk. This often leads to the "slow first start" problem you'll see people complain about on forums.
+
+    Flatpak uses a different method that shares "runtimes" (shared sets of libraries). If you have three GNOME apps installed via Flatpak, they all share the same GNOME runtime, saving disk space and memory.
+
+3. Scope of Use
+
+    Flatpak is purely for desktop applications (like Spotify, Discord, or LibreOffice). You won't find a Flatpak for a printer driver or a web server.
+
+    Snap is universal. It can package anything from a simple calculator to a full Linux Kernel or a database server. This makes it a powerhouse for servers and "Internet of Things" (IoT) devices.
+
+
+PPA = personal package archive. Personally I don't use and I don't recommed.
+Use PPA as a last resort. They are not verified.
