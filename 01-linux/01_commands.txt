@@ -1,0 +1,52 @@
+# some useful commands to use in the terminal
+
+pwd = print working directory aka find out where you are.
+
+ls = list directories and files
+    * ls -a = list all including hidden files and directories
+    * ls -al = same as above but it shows in a list  format. 
+    Also it is possible to create an alias for this command with < alias ll='ls -al' >. 
+    If you want to remove the alias, just use "unalias ll".
+    * ls -R ~/Documents = will list all the directories and files recursively 
+
+cd = change directories.
+
+history = to check the history of commands use.
+    history 10 = return the 10 most recent commands.
+
+adduser = to add new user, but one must use "sudo" because it is an administrative operation. It will ask to set password
+and some other configurations.
+    ex: sudo adduser new_user
+
+addgroup = in the current user, you can add the new user to the "sudo" and "adm" group for example.
+    ex: sudo usermod -aG sudo,adm new_user
+    Please do not use "sudo usermod -aG sudo, adm new_user" because there is a space after sudo and it will return
+    "usermod: group '' does not exist"
+    -a, --append                  append the user to the supplemental GROUPS
+    -G, --groups GROUPS           new list of supplementary GROUPS
+
+su = also known as switch user - switch to new user. It will ask for password.
+    ex: su - new_user
+
+man for manual = this is very helpful to check the help for the commands you're using.
+    ex: man ls
+
+cp = used to copy files or directories 
+    ex: cp ~/Downloads/myfile.txt ~/Documents = move the file from Downloads to Documents.
+    ex: cp -r ~/Downloads/01_ISOS/ ~/Documents/
+        
+        -r/-R = to copy recursively the files and subdirectories under the "01_ISOS" directory.
+        -f, --force
+        -i, --interactive
+        -v, --verbose
+
+
+mv = used to move files or directories
+    - the options of "cp" also applies here. use "man" for help.
+
+rm = used to to remove files
+    - the options of "cp" also applies here. use "man" for help.
+
+
+clear or ctrl + l = to clear the terminal.
+
