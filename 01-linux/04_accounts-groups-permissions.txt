@@ -1,0 +1,12 @@
+# User categories
+
+super user/ root = unrestricted permissions.
+
+user = regular user. can have its own dedicated space and also can normal and belong to adm, sudo or other groups.
+
+service user = for server distros
+service users can not be root users for security purposes and other reasons.
+
+
+
+
