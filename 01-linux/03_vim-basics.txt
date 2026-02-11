@@ -1,0 +1,81 @@
+# Basic Navigation (Normal Mode)
+
+Stop using the arrow keys! Keep your hands on the "home row" to move faster.
+
+    h : Move Left
+
+    j : Move Down
+
+    k : Move Up
+
+    l : Move Right
+
+    w : Jump to the start of the  word.
+
+    b : Jump back to the start of the previous word.
+
+    0 (zero) : Jump to the start of the line.
+
+    $ : Jump to the end of the line.
+
+    gg : Jump to the top of the file.
+
+    G : Jump to the bottom of the file.
+
+
+# Editing Text(i)
+
+These commands are "verbs." You can combine them with numbers (e.g., 3dd deletes 3 lines).
+
+    i : Insert before the cursor.
+
+    a : Append after the cursor.
+
+    o : Open a new line below and enter Insert mode.
+
+    x : Delete a single character.
+
+    dd : Delete (cut) the entire line.
+
+    dw : Delete word (from cursor to start of next word).
+
+    u : Undo the last action.
+
+    Ctrl + r : Redo.
+
+    yy : Yank (copy) a line.
+
+    p : Paste after the cursor.
+
+
+# Saving and Quitting (Command Mode)
+
+All these start by pressing : while in Normal Mode.
+
+    :w : Write (Save) the file.
+
+    :q : Quit.
+
+    :wq : Write and Quit (Save and Exit).
+
+    :q! : Force Quit (Discard unsaved changes).
+
+    :set number : Turn on line numbers.
+
+
+# The "Vim Language" Secret
+
+Vim commands are actually a language. Once you know the "Verbs" and "Nouns," you can talk to your editor:
+
+    d (Delete) + w (Word) = dw
+
+    c (Change) + i (Inside) + " (Quotes) = ci" (Deletes everything inside quotes and lets you type something new).
+
+    y (Yank/Copy) + $ (End of line) = y$ (Copy from cursor to the end of the line).
+
+
+Getting used to vim. It's going to be a fun ride learning to use this editor
+ 
+# link for more informations and tips
+https://medium.com/@thementaltrashcan/vim-not-as-hard-as-you-think-0b45c59a4b57
+
