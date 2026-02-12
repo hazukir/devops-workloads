@@ -1,0 +1,97 @@
+# change ownership of a file
+
+sudo chown tester 05_file-ownership-permissions.txt 
+
+# change ownership of a group
+
+sudo chgrp devops 05_file-ownership-permissions.txt
+
+Notes: When change ownership of a file you will not be able to alter it, meaning you cannot save the changes.
+
+
+
+# file permissions
+
+drwxrwxr-x 2 hazukir hazukir 4096 Feb 12 16:26 ./
+
+d = directory
+first block -> rwx == read, write, execute - applies to user
+second block -> rwx == read, write, execute - applies to group
+r -x == means it belongs to everybody else which is not "hazukir".
+
+
+-rw-rw-r-- 1 hazukir hazukir 2049 Feb 10 10:57 01_commands.txt
+the dash(-) after write means there are no execution permissions for the file.
+
+
+
+# change permissions
+
+sudo chmod -x 01-linux == remove the execute permissions from 01-linux directory from user.
+
+ex: drw-rw-r-- 2 hazukir hazukir 4096 Feb 12 16:26 01-linux/
+
+sudo chmod +x 01-linux == give execute permissions to user.
+
+
+## add permissions to group 
+sudo chmod g+x 01_commands.txt 
+
+## add permissions to user 
+sudo chmod u+x read_files.sh
+
+### adding permissions
+g+x = group + execute
+u+x = user + execute
+o+x = other + execute
+
+
+
+### removing permissions
+g-x = group - execute
+u-x = user - execute
+o-x = other - execute
+
+## we can add or remove all permissions to users and groups by doing either of the following:
+
+sudo chmod -x read_files.sh 
+sudo chmod a-x read_files.sh
+
+a-x == means remove permissions for all.
+
+
+
+## give bulk permissions to a group
+
+sudo chmod g=rwx fetch-names.sh 
+rw- == only read and write permissions
+r-- == only read permissions
+
+for all users and groups use: 
+sudo chmod a=rwx fetch-names.sh 
+
+
+## using numeric values
+
+
+
+# more info/links
+
+https://www.redhat.com/en/blog/linux-file-permissions-explained
+
+https://contabo.com/blog/linux-permission-basics/
+
+
+Digits (0-7) 	Corresponding Permissions 
+0 	No permissions 
+1 	Execute (1) 
+2 	Write (2) 
+3 	Write + Execute (2+1) 
+4 	Read (4) 
+5 	Read + Execute (4+1) 
+6 	Read + Write (4+2) 
+7 	Read + Write + Execute (4+2+1) 
+
+Example: To give read and write permissions to the owner, read-only permission to the group, and no permissions to others on a file named example.txt, you can use the following command: 
+
+chmod 640 example.txt
