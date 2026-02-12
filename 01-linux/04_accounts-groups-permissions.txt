@@ -10,3 +10,58 @@ service users can not be root users for security purposes and other reasons.
 
 
 
+# check users registered on the system
+
+cat /etc/passwd -> displays the 
+
+
+hazukir:x:1000:1000:Helder,,,:/home/hazukir:/bin/bash
+
+USERNAME: PASSWORD : UID : GID : GECOS : HOMEDIR : SHELL
+
+x = encrypted
+1000 = password
+1000 = UID 
+GID
+GECOS
+HOMEDIR
+SHELL
+
+
+password can be found here, but obviously is  encrypted:
+cat /etc/shadow
+
+
+
+Example of a "Tester User"
+
+tester:x:1001:1001:Tester User,122,821790121,729127190:/home/tester:/bin/bash
+
+
+# change password of a user 
+sudo passwd tester
+
+
+# add a primary group to a user 
+sudo usermod -g devops tester 
+
+# comments = add the user "tester" to the group devops as primary 
+
+
+# delete a group 
+sudo delgroup tester (yes, tester was created as a group as well.)
+
+
+# add user to multiple secondary groups
+sudo usermod -aG adm,cdrom dip users,sudo
+
+
+# man command for help
+use "man pages" for help.
+ex: man usermod
+
+
+# delete the user from a specified group 
+Ex: sudo gpasswd -d tester devops
+message: Removing user tester from group devops
+
