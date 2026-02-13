@@ -1,0 +1,98 @@
+# pipes and redirects
+
+## Pipes
+
+The Objective of a Pipe
+
+The core philosophy of Linux is: "Write programs that do one thing and do it well. Write programs to work together." The pipe is the "glue." It takes the Standard Output (the text results) of one command and feeds it directly as the Standard Input to the next command. Instead of saving a file and then opening it with another program, the data flows through the pipe like water.
+
+ Gemini said
+
+In Linux, the Pipe (represented by the vertical bar |) is one of the most powerful concepts in the terminal.
+The Objective of a Pipe
+
+The core philosophy of Linux is: "Write programs that do one thing and do it well. Write programs to work together." The pipe is the "glue." It takes the Standard Output (the text results) of one command and feeds it directly as the Standard Input to the next command. Instead of saving a file and then opening it with another program, the data flows through the pipe like water.
+Why use Pipes for Logs?
+
+System logs (like /var/log/syslog) are often massive—sometimes thousands of lines long. Running just cat would dump a "wall of text" that scrolls past your eyes in a split second.
+
+By using cat /var/log/syslog | less, you are:
+
+    Reading the file (cat).
+
+    Piping that data into a "pager" (less).
+
+    Gaining Control: Now you can scroll up and down, search for keywords (using /), and read at your own pace without cluttering your terminal buffer.
+
+
+ex: cat /var/log/syslog | less
+
+
+While cat file | less works perfectly, you can actually run less /var/log/syslog directly. Using cat with a pipe is called "Useless Use of Cat" (a famous Linux meme), though many people do it because it feels more logical to "get the file first, then pipe it."
+
+However, pipes become essential when you start filtering, like this:
+cat /var/log/syslog | grep "USB" | less
+(This would show you only the log entries related to USB devices in a scrollable view.)
+
+Would you like me to show you how to use the tail -f command? It's the "secret weapon" for watching logs update in real-time as things happen.
+
+
+### keyboard shortcuts
+On the the keyboard, you can navigate to the next page by use "space bar" and go back to previous page by using "B".
+Also, to quit you can used the keyboard key "Q".
+
+
+### other options
+
+ex: history | less 
+
+ex_2 - filter specific thing: history | grep sudo == check commands that has "sudo" in the history of commands used in
+the terminal.
+
+ex_3 = history | grep "sudo chmod" = check how many times sudo chmod was used in the terminal.
+
+
+
+
+## Redirects
+
+1. The "Overwrite" Redirect (>)
+
+Takes the output and puts it into a file. Warning: If the file already exists, it will be wiped clean and replaced.
+
+    Example: ls > filenames.txt
+
+    What happens: Saves the list of files in the current folder to filenames.txt.
+
+2. The "Append" Redirect (>>)
+
+Takes the output and adds it to the end of the file. It does not delete what was already there.
+
+    Example: echo "Log entry: $(date)" >> history.log
+
+    What happens: Adds a timestamped entry to the bottom of your log file.
+
+3. The "Input" Redirect (<)
+
+Feeds a file's content into a command that usually expects keyboard input.
+
+    Example: sort < list.txt
+
+    What happens: Takes the text in list.txt and sorts it alphabetically.
+
+4. Redirecting Errors (2>)
+
+In Linux, "Standard Output" (the result) and "Standard Error" (the error message) are separate.
+
+    Example: ls /root 2> error.log
+
+    What happens: Since you likely don't have permission for /root, the error message is saved to error.log instead of cluttering your screen.
+
+
+Sometimes you want to do both: see the output on your screen and save it to a file. For this, we use tee (named after a T-shaped pipe).
+
+    Command: ls -al | tee manifest.txt
+
+    Result: You see the file list in your terminal, and a copy is simultaneously saved to manifest.txt.
+
+
